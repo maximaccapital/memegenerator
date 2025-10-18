@@ -17,26 +17,21 @@
             <button class="tab-btn active" data-tab="imageTab">Image</button>
             <button class="tab-btn" data-tab="videoTab">Video</button>
         </div>
-        <div class="meme-container" id="imageTab">
-            <div class="meme-canvas" id="memeCanvas">
+        <div id="imageTab" class="meme-container">
+            <div id="memeCanvas" class="meme-canvas">
                 <div class="meme-top">
-                    <div class="meme-text" id="memeText"></div>
+                    <div id="memeText" class="meme-text"></div>
                 </div>
-                <img src="meme.png" alt="Kobe Bryant meme template" class="meme-image">
+                <img src="https://i.kym-cdn.com/photos/images/original/001/456/789/5a1.jpg" alt="Kobe meme" class="meme-image">
             </div>
         </div>
         <div id="videoTab" class="video-generator hidden">
             <div class="video-layout">
-                <!-- Left: Video Preview -->
                 <div class="video-preview-section">
                     <canvas id="videoPreview"></canvas>
                 </div>
-                
-                <!-- Right: Controls -->
                 <div class="video-controls-section">
                     <h2>Controls</h2>
-                    
-                    <!-- Background Selection -->
                     <div class="control-group">
                         <label class="control-label">Background</label>
                         <div class="bg-buttons">
@@ -45,48 +40,35 @@
                         </div>
                         <label class="upload-label">
                             Upload Custom
-                            <input type="file" id="bgUpload" accept="image/*" style="display: none;">
+                            <input type="file" id="bgUpload" accept="image/*" style="display:none">
                         </label>
                     </div>
-                    
-                    <!-- Caption Controls -->
                     <div class="control-group">
                         <label class="control-label">Caption</label>
-                        <input type="text" id="videoCaption" placeholder="Enter caption..." class="caption-input">
-                        
+                        <input id="videoCaption" type="text" placeholder="Enter caption..." class="caption-input" value="JOBS NOT FINISHED">
                         <div class="caption-controls">
                             <select id="captionPosition" class="caption-position">
                                 <option value="top">Top</option>
                                 <option value="bottom">Bottom</option>
                             </select>
-                            <input type="color" id="captionColor" value="#000000" class="caption-color">
-                            <input type="number" id="captionSize" min="24" max="96" value="48" placeholder="Size" class="caption-size">
+                            <input id="captionColor" type="color" value="#000000" class="caption-color">
+                            <input id="captionSize" type="number" min="24" max="96" value="48" class="caption-size" placeholder="Size">
                         </div>
                     </div>
-                    
-                    <!-- Generate Button -->
-                    <button id="generateVideoBtn" class="generate-btn">
-                        GENERATE MEME MP4
-                    </button>
-                    
-                    <!-- Status -->
+                    <button id="generateVideoBtn" class="generate-btn">Generate Meme MP4</button>
                     <div id="renderStatus" class="render-status"></div>
-                    
-                    <!-- Download Button -->
-                    <button id="downloadVideoBtn" class="download-btn hidden">
-                        DOWNLOAD MP4
-                    </button>
+                    <button id="downloadVideoBtn" class="download-btn hidden">Download MP4</button>
                 </div>
             </div>
         </div>
         <div class="generator">
-            <input type="text" id="userInput" placeholder="Enter your jobs not finished meme text...">
+            <input id="userInput" type="text" placeholder="Enter your jobs not finished meme text...">
             <div class="buttons">
-                <button id="generateBtn">GENERATE MEME</button>
-                <button id="downloadBtn">DOWNLOAD MEME</button>
+                <button id="generateBtn">Generate Meme</button>
+                <button id="downloadBtn">Download Meme</button>
             </div>
         </div>
-        <div class="laughs" id="laughTrack"></div>
+        <div id="laughTrack" class="laughs"></div>
     </div>
     <script src="script.js"></script>
 </body>

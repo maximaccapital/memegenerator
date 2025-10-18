@@ -1,44 +1,62 @@
-@font-face {
-    font-family: 'HelveticaNeueMedium';
-    src: url('/HelveticaNeueMedium.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-}
+@import url('https://fonts.cdnfonts.com/css/helvetica-neue-35');
 
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
-    font-family: 'HelveticaNeueMedium', Arial, sans-serif;
     background-color: #111111;
     color: #ffffff;
-    text-align: center;
-    overflow-x: hidden;
+    font-family: 'HelveticaNeueMedium', 'Helvetica Neue', Arial, sans-serif;
+    min-height: 100vh;
 }
 
 .container {
     max-width: 800px;
     margin: 0 auto;
-    padding: 0;
-    opacity: 1; /* show immediately */
 }
 
 .header {
-    margin: 20px 0 30px 0;
-    padding: 0 20px;
+    text-align: center;
+    padding: 20px 0;
 }
 
 h1 {
-    font-family: 'HelveticaNeueMedium', Arial, sans-serif;
     font-size: 54px;
-    line-height: 0.95;
     text-transform: lowercase;
     letter-spacing: -1px;
-    margin-bottom: 20px;
+    line-height: 0.95;
+}
+
+.tab-toggle {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin: 10px 0 20px;
+}
+
+.tab-btn {
+    padding: 10px 14px;
+    border: 1px solid #ffffff;
+    background-color: #111111;
     color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.tab-btn.active {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.hidden {
+    display: none;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
 }
 
 .meme-container {
@@ -52,7 +70,28 @@ h1 {
     position: relative;
     width: 100%;
     display: inline-block;
-    background-color: #fff;
+    background-color: #ffffff;
+}
+
+.meme-top {
+    background-color: #ffffff;
+    min-height: 160px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 20px;
+    border-bottom: 3px solid #000000;
+}
+
+.meme-text {
+    position: static;
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 52px;
+    line-height: 1;
+    text-align: center;
+    color: #000000;
+    word-wrap: break-word;
 }
 
 .meme-image {
@@ -61,44 +100,19 @@ h1 {
     display: block;
 }
 
-.meme-text {
-    position: static;
-    width: 100%;
-    padding: 10px 20px;
-    font-family: 'HelveticaNeueMedium', Arial, sans-serif;
-    font-size: 52px;
-    line-height: 1;
-    text-transform: none;
-    color: black;
-    text-shadow: none;
-    z-index: auto;
-    text-align: center;
-    word-wrap: break-word;
-}
-
-.meme-top {
-    background: #fff;
-    min-height: 160px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    padding: 20px;
-    border-bottom: 3px solid #000;
-}
-
 .generator {
-    margin: 0;
     padding: 0 20px 30px;
+    margin: 0;
 }
 
-input[type="text"] {
+.generator input[type="text"] {
     width: 100%;
     padding: 15px;
     margin-bottom: 15px;
     border: 3px solid #ffffff;
     border-radius: 0;
     font-size: 18px;
-    font-family: 'HelveticaNeueMedium', Arial, sans-serif;
+    font-family: 'HelveticaNeueMedium', 'Helvetica Neue', Arial, sans-serif;
     background-color: #ffffff;
     color: #000000;
 }
@@ -110,33 +124,42 @@ input[type="text"] {
     width: 100%;
 }
 
-button {
+.buttons button {
+    width: 100%;
     padding: 15px;
     background-color: #ffffff;
     color: #000000;
-    border: none;
-    cursor: pointer;
-    font-family: 'HelveticaNeueMedium', Arial, sans-serif;
-    font-size: 24px;
     font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: -0.5px;
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
     transition: background-color 0.2s;
 }
 
-button:hover {
+.buttons button:hover {
     background-color: #dddddd;
+}
+
+.laughs {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
 }
 
 .laugh {
     position: absolute;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 8px 12px;
     font-size: 24px;
     font-weight: bold;
+    border-radius: 4px;
     animation: floatUp 2s forwards;
-    opacity: 0;
-    background-color: #000;
-    color: #fff;
-    padding: 8px 12px;
 }
 
 @keyframes floatUp {
@@ -153,22 +176,9 @@ button:hover {
     }
 }
 
-.tab-toggle { display:flex; gap:8px; justify-content:center; margin:10px 0 20px; }
-.tab-btn { padding:10px 14px; border:2px solid #ffffff; background:#111; color:#ffffff; cursor:pointer; font-family:'HelveticaNeueMedium', Arial, sans-serif; }
-.tab-btn.active { background:#ffffff; color:#000000; }
-
-.meme-container, .video-generator {
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.meme-container.hidden, .video-generator.hidden {
-    display: none;
-    opacity: 0;
-    transform: translateY(-10px);
-}
-
 .video-generator {
-    padding: 20px;
+    width: 100%;
+    padding: 0 20px;
 }
 
 .video-layout {
@@ -183,7 +193,7 @@ button:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #000000;
+    background-color: #000000;
     padding: 20px;
     border-radius: 8px;
 }
@@ -193,7 +203,7 @@ button:hover {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    background: #222222;
+    background-color: #222222;
     padding: 24px;
     border-radius: 8px;
 }
@@ -201,8 +211,8 @@ button:hover {
 .video-controls-section h2 {
     color: #ffffff;
     font-size: 24px;
-    margin-bottom: 8px;
     text-align: left;
+    margin-bottom: 8px;
 }
 
 .control-group {
@@ -226,12 +236,12 @@ button:hover {
 .bg-button {
     flex: 1;
     padding: 12px;
-    background: #ffffff;
+    background-color: #ffffff;
     color: #000000;
+    font-size: 16px;
+    text-align: center;
     border: none;
     cursor: pointer;
-    font-family: 'HelveticaNeueMedium', Arial, sans-serif;
-    font-size: 16px;
     transition: background-color 0.2s;
 }
 
@@ -240,16 +250,15 @@ button:hover {
 }
 
 .upload-label {
-    display: block;
     width: 100%;
     padding: 12px;
-    background: #ffffff;
+    background-color: #ffffff;
     color: #000000;
+    font-size: 16px;
     text-align: center;
     cursor: pointer;
-    font-family: 'HelveticaNeueMedium', Arial, sans-serif;
-    font-size: 16px;
     transition: background-color 0.2s;
+    display: block;
 }
 
 .upload-label:hover {
@@ -259,11 +268,10 @@ button:hover {
 .caption-input {
     width: 100%;
     padding: 12px;
-    background: #ffffff;
+    background-color: #ffffff;
     color: #000000;
-    border: 2px solid #ffffff;
-    font-family: 'HelveticaNeueMedium', Arial, sans-serif;
     font-size: 16px;
+    border: 2px solid #ffffff;
 }
 
 .caption-controls {
@@ -274,45 +282,45 @@ button:hover {
 
 .caption-position {
     padding: 12px;
-    background: #ffffff;
+    background-color: #ffffff;
     color: #000000;
-    border: none;
-    font-family: 'HelveticaNeueMedium', Arial, sans-serif;
     font-size: 14px;
+    border: none;
 }
 
 .caption-color {
     width: 60px;
     height: 44px;
-    background: #ffffff;
+    background-color: #ffffff;
     border: 2px solid #ffffff;
     cursor: pointer;
 }
 
 .caption-size {
     padding: 12px;
-    background: #ffffff;
+    background-color: #ffffff;
     color: #000000;
-    border: 2px solid #ffffff;
-    font-family: 'HelveticaNeueMedium', Arial, sans-serif;
     font-size: 14px;
+    border: 2px solid #ffffff;
+    text-align: center;
 }
 
-.generate-btn {
+.generate-btn,
+.download-btn {
     width: 100%;
     padding: 16px;
-    background: #ffffff;
+    background-color: #ffffff;
     color: #000000;
-    border: none;
-    cursor: pointer;
-    font-family: 'HelveticaNeueMedium', Arial, sans-serif;
-    font-size: 20px;
     font-weight: bold;
     text-transform: uppercase;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
     transition: background-color 0.2s;
 }
 
-.generate-btn:hover {
+.generate-btn:hover:not(:disabled),
+.download-btn:hover {
     background-color: #dddddd;
 }
 
@@ -322,39 +330,19 @@ button:hover {
     cursor: not-allowed;
 }
 
-.download-btn {
-    width: 100%;
-    padding: 16px;
-    background: #ffffff;
-    color: #000000;
-    border: none;
-    cursor: pointer;
-    font-family: 'HelveticaNeueMedium', Arial, sans-serif;
-    font-size: 20px;
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: background-color 0.2s;
-}
-
-.download-btn:hover {
-    background-color: #dddddd;
-}
-
-.download-btn.hidden {
-    display: none;
-}
-
 .render-status {
     text-align: center;
     color: #ffffff;
     font-size: 14px;
     padding: 8px;
+    min-height: 30px;
 }
 
 #videoPreview {
     max-width: 100%;
     max-height: 70vh;
     border-radius: 4px;
+    background-color: #000000;
 }
 
 @media (max-width: 800px) {
@@ -372,17 +360,12 @@ button:hover {
         font-size: 38px;
     }
     
-    button {
-        font-size: 20px;
-    }
-    
     .meme-top {
         min-height: 120px;
         padding: 16px;
     }
-}
-
-@media (max-width: 800px) {
-  .video-generator .video-layout { flex-direction:column; }
-  #sourceVideo { max-height:160px; }
+    
+    .buttons button {
+        font-size: 20px;
+    }
 }
