@@ -128,8 +128,12 @@
             renderStatus.textContent = 'Loading FFmpeg...';
             
             try {
-                const { FFmpeg } = await import('https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/+esm');
-                const { toBlobURL } = await import('https://cdn.jsdelivr.net/npm/@ffmpeg/util@0.12.10/+esm');
+                if (!window.FFmpegWASM || !window.FFmpegUtil) {
+                    throw new Error('FFmpeg libraries not loaded. Check script tags.');
+                }
+                
+                const { FFmpeg } = window.FFmpegWASM;
+                const { toBlobURL } = window.FFmpegUtil;
                 
                 ffmpeg = new FFmpeg();
                 ffmpeg.on('log', ({ message }) => console.log(message));
@@ -144,7 +148,7 @@
                 renderStatus.textContent = 'FFmpeg ready!';
             } catch (error) {
                 console.error('FFmpeg load error:', error);
-                throw new Error('FFmpeg import failed. Check ES modules support.');
+                throw new Error(`FFmpeg load failed: ${error.message}`);
             }
         };
 

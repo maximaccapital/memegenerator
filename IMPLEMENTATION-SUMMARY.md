@@ -37,12 +37,12 @@ Three clean, optimized files with **ZERO** duplicate code, unnecessary comments,
 - ✅ Comprehensive error handling for all edge cases
 
 ### Styling
-- ✅ Dark theme (#111111 bg, #ffffff text)
+- ✅ Monochrome theme (pure black #000000 bg, pure white #ffffff text)
 - ✅ HelveticaNeueMedium from fonts.cdnfonts.com CDN
 - ✅ Mobile responsive (stack at 800px, reduce fonts at 600px)
 - ✅ Smooth transitions (0.2s, 0.3s easing)
-- ✅ Hover effects on all buttons (#dddddd)
-- ✅ Disabled state styling (#666 bg, #999 text)
+- ✅ Hover effects on all buttons (opacity 0.9)
+- ✅ Disabled state styling (opacity 0.4)
 
 ---
 
@@ -86,8 +86,8 @@ Three clean, optimized files with **ZERO** duplicate code, unnecessary comments,
 | Tailwind CSS | Latest | cdn.tailwindcss.com | Utility classes |
 | GSAP | 3.12.2 | cdnjs.cloudflare.com | Animations |
 | html2canvas | 1.4.1 | cdnjs.cloudflare.com | Image capture |
-| FFmpeg | 0.12.10 | cdn.jsdelivr.net | Video encoding |
-| @ffmpeg/util | 0.12.10 | cdn.jsdelivr.net | FFmpeg utilities |
+| FFmpeg (UMD) | 0.12.10 | cdn.jsdelivr.net | Video encoding |
+| @ffmpeg/util (UMD) | 0.12.10 | cdn.jsdelivr.net | FFmpeg utilities |
 | HelveticaNeueMedium | Latest | fonts.cdnfonts.com | Typography |
 
 ---
@@ -148,10 +148,10 @@ xdg-open index.html  # Linux
 - `background-2.png` - Alternative background
 
 ### Browser Requirements
-- Chrome 90+ / Firefox 88+ / Edge 90+
-- ES6 modules support
-- WebAssembly support
+- Chrome 90+ / Firefox 88+ / Edge 90+ / Safari 14+
+- WebAssembly support (UMD build for broad compatibility)
 - Canvas API, MediaRecorder API
+- iOS Safari and Android Chrome supported
 
 ---
 

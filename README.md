@@ -20,7 +20,7 @@ A fully interactive, client-side web app inspired by Kobe Bryant's iconic "jobs 
 
 ## Design
 
-- **Dark Theme**: Background #111111, white text #ffffff
+- **Monochrome Theme**: Pure black (#000000) background, pure white (#ffffff) text and buttons
 - **Typography**: HelveticaNeueMedium from CDN with Arial fallback
 - **Mobile Responsive**: 
   - Video sections stack vertically on screens <800px
@@ -41,8 +41,8 @@ A fully interactive, client-side web app inspired by Kobe Bryant's iconic "jobs 
 - **GSAP v3.12.2** (cdnjs.cloudflare.com): Animation library
 - **Tailwind CSS** (cdn.tailwindcss.com): Utility-first CSS
 - **html2canvas v1.4.1** (cdnjs.cloudflare.com): Image capture
-- **FFmpeg.js v0.12.10** (cdn.jsdelivr.net): Video encoding
-- **@ffmpeg/util v0.12.10** (cdn.jsdelivr.net): FFmpeg utilities
+- **FFmpeg.js v0.12.10 UMD** (cdn.jsdelivr.net): Video encoding (H.264 + AAC)
+- **@ffmpeg/util v0.12.10 UMD** (cdn.jsdelivr.net): FFmpeg utilities
 - **HelveticaNeueMedium** (fonts.cdnfonts.com): Primary font
 
 ### Key Technologies
@@ -88,9 +88,10 @@ Place these files in the root directory:
 
 ## Browser Compatibility
 
-- **Recommended**: Chrome 90+, Firefox 88+, Edge 90+
-- **Required APIs**: Canvas, MediaRecorder, ES6 modules, WebAssembly
-- **FFmpeg Loading**: Uses ESM imports (modern browsers only)
+- **Recommended**: Chrome 90+, Firefox 88+, Edge 90+, Safari 14+
+- **Required APIs**: Canvas, MediaRecorder, WebAssembly
+- **FFmpeg Loading**: Uses UMD build (broad browser support)
+- **Mobile Support**: iOS Safari, Android Chrome
 
 ## File Structure
 
