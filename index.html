@@ -3,91 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JOBS NOT FINISHED MEME GENERATOR</title>
+    <title>Jobs Not Finished Meme Generator</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 <body>
     <div class="container">
-        <div class="header">
+        <header>
             <h1 id="title">jobs not finished meme generator</h1>
-        </div>
-        <div class="tab-toggle">
+        </header>
+
+        <div class="tabs">
             <button class="tab-btn active" data-tab="imageTab">Image</button>
             <button class="tab-btn" data-tab="videoTab">Video</button>
         </div>
-        <div class="meme-container" id="imageTab">
-            <div class="meme-canvas" id="memeCanvas">
+
+        <div id="imageTab" class="tab-content">
+            <div id="memeCanvas" class="meme-canvas">
                 <div class="meme-top">
-                    <div class="meme-text" id="memeText"></div>
+                    <div id="memeText" class="meme-text"></div>
                 </div>
-                <img src="meme.png" alt="Kobe Bryant meme template" class="meme-image">
+                <img src="https://i.kym-cdn.com/photos/images/original/001/456/789/5a1.jpg" 
+                     alt="Kobe meme template" 
+                     class="meme-image">
+            </div>
+
+            <div class="generator-section">
+                <input type="text" 
+                       id="userInput" 
+                       class="meme-input" 
+                       placeholder="Enter your meme text..." 
+                       maxlength="100">
+                
+                <div class="button-stack">
+                    <button id="generateBtn" class="btn">GENERATE MEME</button>
+                    <button id="downloadBtn" class="btn">DOWNLOAD MEME</button>
+                </div>
             </div>
         </div>
-        <div id="videoTab" class="video-generator hidden">
+
+        <div id="videoTab" class="video-generator tab-content hidden">
             <div class="video-layout">
-                <!-- Left: Video Preview -->
-                <div class="video-preview-section">
+                <div class="preview-section">
                     <canvas id="videoPreview"></canvas>
                 </div>
-                
-                <!-- Right: Controls -->
-                <div class="video-controls-section">
+
+                <div class="controls-section">
                     <h2>Controls</h2>
-                    
-                    <!-- Background Selection -->
+
                     <div class="control-group">
                         <label class="control-label">Background</label>
                         <div class="bg-buttons">
-                            <button id="bgDefault1" class="bg-button">BG 1</button>
-                            <button id="bgDefault2" class="bg-button">BG 2</button>
+                            <button class="bg-btn active" data-bg="background-1.webp">BG 1</button>
+                            <button class="bg-btn" data-bg="background-2.png">BG 2</button>
+                            <label class="upload-label">
+                                Upload Custom
+                                <input type="file" id="bgUpload" accept="image/*" style="display: none;">
+                            </label>
                         </div>
-                        <label class="upload-label">
-                            Upload Custom
-                            <input type="file" id="bgUpload" accept="image/*" style="display: none;">
-                        </label>
                     </div>
-                    
-                    <!-- Caption Controls -->
+
                     <div class="control-group">
                         <label class="control-label">Caption</label>
-                        <input type="text" id="videoCaption" placeholder="Enter caption..." class="caption-input">
+                        <input type="text" 
+                               id="videoCaption" 
+                               class="caption-input" 
+                               placeholder="Enter caption text..." 
+                               value="JOBS NOT FINISHED">
                         
                         <div class="caption-controls">
-                            <select id="captionPosition" class="caption-position">
+                            <select id="captionPosition">
                                 <option value="top">Top</option>
                                 <option value="bottom">Bottom</option>
                             </select>
-                            <input type="color" id="captionColor" value="#000000" class="caption-color">
-                            <input type="number" id="captionSize" min="24" max="96" value="48" placeholder="Size" class="caption-size">
+                            <input type="color" id="captionColor" value="#000000">
+                            <input type="number" 
+                                   id="captionSize" 
+                                   class="caption-size" 
+                                   min="24" 
+                                   max="96" 
+                                   value="48">
                         </div>
                     </div>
-                    
-                    <!-- Generate Button -->
-                    <button id="generateVideoBtn" class="generate-btn">
-                        GENERATE MEME MP4
-                    </button>
-                    
-                    <!-- Status -->
-                    <div id="renderStatus" class="render-status"></div>
-                    
-                    <!-- Download Button -->
-                    <button id="downloadVideoBtn" class="download-btn hidden">
-                        DOWNLOAD MP4
-                    </button>
+
+                    <button id="generateVideoBtn" class="generate-btn">GENERATE MEME MP4</button>
+
+                    <div id="statusText" class="status-text"></div>
+
+                    <button id="downloadVideoBtn" class="download-btn hidden">DOWNLOAD MP4</button>
                 </div>
             </div>
         </div>
-        <div class="generator">
-            <input type="text" id="userInput" placeholder="Enter your jobs not finished meme text...">
-            <div class="buttons">
-                <button id="generateBtn">GENERATE MEME</button>
-                <button id="downloadBtn">DOWNLOAD MEME</button>
-            </div>
-        </div>
-        <div class="laughs" id="laughTrack"></div>
     </div>
+
+    <audio id="laughTrack" style="display: none;"></audio>
+    <video id="sourceVideo" style="display: none;" loop muted playsinline crossorigin="anonymous"></video>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
