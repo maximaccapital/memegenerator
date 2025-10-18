@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOBS NOT FINISHED MEME GENERATOR</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 id="title">jobs not finished meme generator</h1>
+        </div>
+        <div class="tab-toggle">
+            <button class="tab-btn active" data-tab="imageTab">Image</button>
+            <button class="tab-btn" data-tab="videoTab">Video</button>
+        </div>
+        <div class="meme-container" id="imageTab">
+            <div class="meme-canvas" id="memeCanvas">
+                <div class="meme-top">
+                    <div class="meme-text" id="memeText"></div>
+                </div>
+                <img src="meme.png" alt="Kobe Bryant meme template" class="meme-image">
+            </div>
+        </div>
+        <div id="videoTab" class="video-generator hidden">
+            <div class="video-layout">
+                <!-- Left: Video Preview -->
+                <div class="video-preview-section">
+                    <canvas id="videoPreview"></canvas>
+                </div>
+                
+                <!-- Right: Controls -->
+                <div class="video-controls-section">
+                    <h2>Controls</h2>
+                    
+                    <!-- Background Selection -->
+                    <div class="control-group">
+                        <label class="control-label">Background</label>
+                        <div class="bg-buttons">
+                            <button id="bgDefault1" class="bg-button">BG 1</button>
+                            <button id="bgDefault2" class="bg-button">BG 2</button>
+                        </div>
+                        <label class="upload-label">
+                            Upload Custom
+                            <input type="file" id="bgUpload" accept="image/*" style="display: none;">
+                        </label>
+                    </div>
+                    
+                    <!-- Caption Controls -->
+                    <div class="control-group">
+                        <label class="control-label">Caption</label>
+                        <input type="text" id="videoCaption" placeholder="Enter caption..." class="caption-input">
+                        
+                        <div class="caption-controls">
+                            <select id="captionPosition" class="caption-position">
+                                <option value="top">Top</option>
+                                <option value="bottom">Bottom</option>
+                            </select>
+                            <input type="color" id="captionColor" value="#000000" class="caption-color">
+                            <input type="number" id="captionSize" min="24" max="96" value="48" placeholder="Size" class="caption-size">
+                        </div>
+                    </div>
+                    
+                    <!-- Generate Button -->
+                    <button id="generateVideoBtn" class="generate-btn">
+                        GENERATE MEME MP4
+                    </button>
+                    
+                    <!-- Status -->
+                    <div id="renderStatus" class="render-status"></div>
+                    
+                    <!-- Download Button -->
+                    <button id="downloadVideoBtn" class="download-btn hidden">
+                        DOWNLOAD MP4
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="generator">
+            <input type="text" id="userInput" placeholder="Enter your jobs not finished meme text...">
+            <div class="buttons">
+                <button id="generateBtn">GENERATE MEME</button>
+                <button id="downloadBtn">DOWNLOAD MEME</button>
+            </div>
+        </div>
+        <div class="laughs" id="laughTrack"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
